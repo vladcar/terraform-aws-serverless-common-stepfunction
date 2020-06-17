@@ -7,12 +7,10 @@ resource "aws_sfn_state_machine" "sfn_state_machine" {
 }
 
 resource "aws_iam_role" "sfn-exec" {
-  name_prefix        = var.state_machine_name
   assume_role_policy = data.aws_iam_policy_document.sfn-assume-role.json
 }
 
 resource "aws_iam_policy" "lambda-invoke" {
-  name   = "lambda-invoke"
   policy = data.aws_iam_policy_document.lambda-invoke.json
 }
 
